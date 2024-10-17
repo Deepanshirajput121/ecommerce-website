@@ -1,21 +1,37 @@
-export default function ProductList() {
-    const products = [
-      { id: 1, name: 'Product 1', price: '$20', imageUrl: '/images/product1.jpg' },
-      { id: 2, name: 'Product 2', price: '$30', imageUrl: '/images/product2.jpg' },
-      { id: 3, name: 'Product 3', price: '$40', imageUrl: '/images/product3.jpg' },
-    ];
-  
+import { useState, useEffect } from 'react'; // Import useState and useEffect from React
+import Link from 'next/link';
+
+export default function ProductsList() {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const response = await fetch('/api/products'); // API se products fetch karein
+            const data = await response.json();
+            setProducts(data);
+        };
+
+        fetchProducts();
+    }, []);
+
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map(product => (
-          <div key={product.id} className="border p-4 rounded-lg">
-            {/* <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover mb-4" /> */}
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className="text-xl font-bold text-green-600">{product.price}</p>
-            <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Add to Cart</button>
-          </div>
-        ))}
-      </div>
+        <div className="container mx-auto py-10">
+            <h1 className="text-3xl font-bold mb-5">Products</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                {products.map(product => (
+                    <div key={product._id} className="border rounded-lg p-4">
+                        <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
+                        <h2 className="text-xl font-semibold">{product.name}</h2>
+                        <p className="text-gray-700">{product.description}</p>
+                        <p className="text-lg font-bold">{product.price}</p>
+                        <Link href={`/products/${product._id}`}>
+                            <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+                                View Details
+                            </button>
+                        </Link>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
-  }
-  
+}

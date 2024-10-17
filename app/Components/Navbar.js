@@ -4,6 +4,7 @@ import Link from 'next/link'; // Import Next.js Link component
 import Image from 'next/image'; // If you are using images
 import { FiShoppingCart } from 'react-icons/fi'; // Cart Icon from react-icons
 
+
 export default function Navbar() {
     return (
         <nav className="bg-slate-950 p-5 shadow-lg">
@@ -13,7 +14,7 @@ export default function Navbar() {
                 <div>
                     <Link href="/">
                         <Image
-                            src="/images/logo.png"
+                            src="/images/logo2.png"
                             alt="Logo"
                             width={100}
                             height={150}
@@ -40,12 +41,13 @@ export default function Navbar() {
                     <Link href="/" className="text-white hover:underline">Home</Link>
 
                     {/* Category Links */}
-                    <Link href="/Men's" className="text-white hover:underline">Men's</Link>
-                    <Link href="/Women's" className="text-white hover:underline">Women's</Link>
-                    <Link href="/Kids" className="text-white hover:underline">Kids</Link>
+
+                    <Link href="/men" className="hover:text-gray-400 hover:underline">Men's</Link>
+                    <Link href="/women" className="hover:text-gray-400 hover:underline">Women's</Link>
+                    <Link href="/kids" className="hover:text-gray-400 hover:underline">Kids</Link>
 
                     {/* Login Link */}
-                    <Link href="/Components/login" className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+                    <Link href="/login" className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
                         Login
                     </Link>
 
