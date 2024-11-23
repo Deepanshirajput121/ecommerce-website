@@ -1,6 +1,29 @@
-import React from 'react';
+"use client";
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Signup() {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const router = useRouter();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password }),
+        });
+
+        if (response.ok) {
+            router.push('/'); // Signup ke baad Home page par redirect
+        } else {
+            console.error('Signup failed');
+        }
+    };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-400">
             <div className="bg-slate-950 p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -9,7 +32,7 @@ export default function Signup() {
                     <p className="text-gray-500">Sign up for a new account</p>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     {/* Username Input */}
                     <div className="mb-6">
                         <label htmlFor="username" className="block text-sm font-medium text-gray-500">
@@ -20,6 +43,8 @@ export default function Signup() {
                             id="username"
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
 
@@ -33,6 +58,8 @@ export default function Signup() {
                             id="email"
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="you@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
@@ -46,6 +73,8 @@ export default function Signup() {
                             id="password"
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="********"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 

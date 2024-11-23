@@ -1,4 +1,6 @@
-// app/kids/[id]/ProductDetails.js
+"use client"; // This directive makes the component a Client Component
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Sample product data for kids
@@ -135,21 +137,40 @@ const products = [
 
 
 
-export default async function ProductDetails({ params }) {
-    const productId = params.id;
-    const product = products.find((product) => product.id === parseInt(productId));
+export default function ProductDetails({ params }) {
+    const { id } = params; // Get the dynamic id
+    const [product, setProduct] = useState(null);
+    const [notification, setNotification] = useState(false); // State to manage notification visibility
+
+    useEffect(() => {
+        // Simulate fetching the product from an API or data source
+        const fetchedProduct = products.find((product) => product.id === parseInt(id));
+        setProduct(fetchedProduct);
+    }, [id]);
+
+    const handleAddToCart = () => {
+        setNotification(true); // Show the notification
+        setTimeout(() => {
+            setNotification(false);
+        }, 3000);
+    };
 
     if (!product) {
-        return <p>Product not found.</p>;
+        return <p>Loading...</p>;
     }
 
     return (
         <div className="container mx-auto py-10">
+            {notification && (
+                <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded shadow-lg">
+                    Added to Cart!
+                </div>
+            )}
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-4xl font-semibold">{product.name}</h1>
                 <Link href="/kids">
                     <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
-                        Back to Kids' Collection
+                        Back to kids Collection
                     </button>
                 </Link>
             </div>
@@ -168,18 +189,14 @@ export default async function ProductDetails({ params }) {
                         <li><strong>Available Sizes:</strong> {product.size}</li>
                         <li><strong>Care Instructions:</strong> {product.care}</li>
                     </ul>
-                    <button className="w-full bg-pink-600 text-white py-4 rounded-lg hover:bg-pink-700 transition duration-300 text-5xl">
+                    <button
+                        className="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition duration-300 text-5xl"
+                        onClick={handleAddToCart}
+                    >
                         Add to Cart
                     </button>
                 </div>
             </div>
         </div>
     );
-}
-
-// This is required to enable dynamic routing in Next.js App Router
-export async function generateStaticParams() {
-    return products.map((product) => ({
-        id: product.id.toString(),
-    }));
 }

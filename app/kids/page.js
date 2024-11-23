@@ -1,5 +1,6 @@
-import React from "react";
-import Link from "next/link"; // Import Link from next/link
+"use client";
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function Kids() {
   const products = [
@@ -101,6 +102,15 @@ export default function Kids() {
     },
   ];
 
+  const [selectedQuantities, setSelectedQuantities] = useState({});
+
+  const handleQuantityChange = (productId, quantity) => {
+    setSelectedQuantities({
+      ...selectedQuantities,
+      [productId]: quantity,
+    });
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -146,6 +156,23 @@ export default function Kids() {
                 />
                 <h3 className="text-lg font-semibold mb-2 text-slate-800">{product.name}</h3>
                 <p className="text-gray-600 mb-4">{product.price}</p>
+
+                {/* Quantity Selector */}
+                <div className="mb-4">
+                  <label htmlFor={`quantity-${product.id}`} className="border border-gray-600 bg-gray-800 text-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Quantity:</label>
+                  <select
+                    id={`quantity-${product.id}`}
+                    value={selectedQuantities[product.id] || 1}
+                    onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+                    className="border border-gray-600 bg-gray-800 text-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
 
                 {/* View Details Button */}
                 <Link href={`/kids/${product.id}`}>

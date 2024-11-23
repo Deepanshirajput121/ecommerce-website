@@ -1,9 +1,13 @@
+"use client"; // This directive makes the component a Client Component
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useCart } from '../../Components/CartContext';
 
 
 // Sample product data for demonstration
 const products = [
+
   {
     id: 1,
     name: "Men's Casual T-Shirt",
@@ -110,7 +114,7 @@ const products = [
     name: "Men's Jacket",
     price: "$60",
     image: "https://i.pinimg.com/564x/6c/67/68/6c67683f6fd68b0be3c5f550a6ccc3b0.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -120,7 +124,7 @@ const products = [
     name: "Men's Sneakers",
     price: "$50",
     image: "https://i.pinimg.com/564x/58/6c/23/586c230ded005b992a014eb0f8f7d1df.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -130,7 +134,7 @@ const products = [
     name: "Men's T-Shirt",
     price: "$20",
     image: "https://i.pinimg.com/564x/80/19/7f/80197f2448bb4e041a9efb4ed0a0419d.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -140,7 +144,7 @@ const products = [
     name: "Men's Jeans",
     price: "$40",
     image: "https://i.pinimg.com/564x/94/60/84/946084697639ef542dc934319180a28a.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -150,7 +154,7 @@ const products = [
     name: "Men's Jacket",
     price: "$60",
     image: "https://i.pinimg.com/564x/5a/11/79/5a11799fdb6eecc86a2ad144a7b200bc.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -160,7 +164,7 @@ const products = [
     name: "Men's Sneakers",
     price: "$50",
     image: "https://i.pinimg.com/564x/ff/ab/ef/ffabef13b1263e271f4f818c48207e0c.jpg",
-     description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
+    description: "Comfortable, breathable sneakers perfect for everyday wear. The sleek design ensures a snug fit, while the durable rubber sole provides traction and support.",
     material: "Synthetic Mesh Upper, Rubber Sole",
     size: "7, 8, 9, 10, 11",
     care: "Wipe with damp cloth"
@@ -168,17 +172,40 @@ const products = [
 ];
 
 export default function ProductDetails({ params }) {
-  const { id } = params; // Get the dynamic id
+  const { id } = params;
+  const [product, setProduct] = useState(null);
+  const { addToCart } = useCart(); // Access the addToCart function from context
+  const [notification, setNotification] = useState(false);
 
-  // Find the product by ID
-  const product = products.find((product) => product.id === parseInt(id));
+  useEffect(() => {
+    const fetchedProduct = products.find((product) => product.id === parseInt(id));
+    setProduct(fetchedProduct);
+  }, [id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product); // Add product to cart using context
+      setNotification(true);
+      setTimeout(() => setNotification(false), 3000);
+    }
+  };
 
   if (!product) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader"></div> {/* Spinner loader */}
+      </div>
+    );
   }
+
 
   return (
     <div className="container mx-auto py-10">
+      {notification && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded shadow-lg">
+          Added to Cart!
+        </div>
+      )}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-4xl font-semibold">{product.name}</h1>
         <Link href="/men">
@@ -202,19 +229,18 @@ export default function ProductDetails({ params }) {
             <li><strong>Available Sizes:</strong> {product.size}</li>
             <li><strong>Care Instructions:</strong> {product.care}</li>
           </ul>
-           <button className="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition duration-300 text-5xl">
-                  Add to Cart
-           </button>
+
+          <div>
+            <button
+              className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg text-4xl hover:bg-blue-700 transition duration-300 mt-4"
+              onClick={handleAddToCart} // Add the click handler here
+            >
+              Add to Cart
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
   );
 }
-
-// This is required to enable dynamic routing in Next.js App Router
-export async function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id.toString(),
-  }));
-}
- 

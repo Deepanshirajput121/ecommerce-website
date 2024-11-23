@@ -1,4 +1,6 @@
 // pages/men.js
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function Men() {
@@ -100,6 +102,14 @@ export default function Men() {
       image: "https://i.pinimg.com/564x/ff/ab/ef/ffabef13b1263e271f4f818c48207e0c.jpg",
     },
   ];
+  const [selectedQuantities, setSelectedQuantities] = useState({});
+
+  const handleQuantityChange = (productId, quantity) => {
+    setSelectedQuantities({
+      ...selectedQuantities,
+      [productId]: quantity,
+    });
+  };
 
 
   return (
@@ -142,6 +152,25 @@ export default function Men() {
                 />
                 <h3 className="text-lg font-semibold mb-2 text-slate-800">{product.name}</h3>
                 <p className="text-gray-600 mb-4">{product.price}</p>
+
+                {/* Quantity Selector */}
+                <div className="mb-4">
+                  <label htmlFor={`quantity-${product.id}`} className="border border-gray-600 bg-gray-800 text-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">Quantity:</label>
+                  <select
+                    id={`quantity-${product.id}`}
+                    value={selectedQuantities[product.id] || 1}
+                    onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+                    className="border border-gray-600 bg-gray-800 text-white rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+
+
                 <Link href={`/products/${product.id}`}>
                   <button className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300">
                     View Details
@@ -151,6 +180,8 @@ export default function Men() {
             ))}
           </div>
         </div>
+
+
         {/* Explore More Button at the End */}
         <div className="text-center mt-10">
           <Link href="/more-products">
