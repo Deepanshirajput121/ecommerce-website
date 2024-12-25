@@ -10,6 +10,7 @@ export default function Navbar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
 
     // Predefined suggestions
     const suggestionData = [
@@ -29,6 +30,14 @@ export default function Navbar() {
         "Kid's Shoes",
         "Kid's Jacket",
     ];
+
+        // Predefined products for example (you will fetch real products here)
+        const products = [
+            { name: "Women's Dress", category: "Women's", url: "/women/dresses" },
+            { name: "Men's Casual T-Shirt", category: "Men's", url: "/men/casual-t-shirts" },
+            { name: "Kid's Shoes", category: "Kid's", url: "/kids/shoes" },
+            // Add more products here as needed
+        ];
 
     // Handle search input change
     const handleInputChange = (e) => {
@@ -50,6 +59,23 @@ export default function Navbar() {
     const handleSuggestionClick = (suggestion) => {
         setSearchQuery(suggestion); // Set the input value to the clicked suggestion
         setSuggestions([]); // Clear suggestions
+    };
+
+        // Handle Search
+        const handleSearch = () => {
+            // Filter products based on the search query
+            const filteredProducts = products.filter((product) =>
+                product.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setSearchResults(filteredProducts);
+            setSuggestions([]);
+        };
+
+            // Handle Enter key press
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
     };
 
     // Toggle drawer visibility
@@ -77,7 +103,7 @@ export default function Navbar() {
                     {/* Logo Section */}
                     <div>
                         <Link href="/">
-                            <Image src="/images/logo2.png" alt="Logo" width={100} height={150} />
+                            <Image src="/images/logo2.png" alt="Logo" width={50} height={50} />
                         </Link>
                     </div>
 

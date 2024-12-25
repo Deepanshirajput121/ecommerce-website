@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import ChatWindow from "./components/ChatWindow.js";
 import ProductList from "./Components/ProductList"; // Import ProductList Component
 
 export default function Home() {
@@ -45,37 +46,38 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section - Chat Window taking full space */}
       <section 
-        className="hero-section bg-gray-100 py-10 bg-cover bg-center h-[80vh]" 
-        style={{ backgroundImage: "url('https://i.pinimg.com/originals/4b/c5/a8/4bc5a864bc7cb0cffbee7b40e28f7c02.jpg')" }}
-      >
-        <div className="container mx-auto text-center">
-          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-lg">Welcome to Our Online Store</h1>
-          <p className="text-2xl text-white drop-shadow-md">Find the best products at the best prices!</p>
-          <a 
-            href="/shop" 
-            className="mt-6 inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-          >
-            Shop Now
-          </a>
-        </div>
-      </section>
+  className="hero-section bg-black  py-10 h-[70vh] relative" // Adjusted height for the section
+>
+  <div className="absolute inset-0 w-full h-full bg-opacity-40"></div>
+  <div className="relative z-10 container mx-auto text-center flex justify-center items-center w-full h-full flex-col mt-12"> {/* Added margin-top */}
+    
+    {/* Heading with fade-in animation, moved down with margin */}
+    <h1 className="text-6xl font-bold mb-4 text-white drop-shadow-lg animate__animated animate__fadeIn animate__delay-1s">
+      Welcome to Our Online Store
+    </h1>
+
+    {/* Subheading with fade-in animation, moved down with margin */}
+    <p className="text-2xl text-white drop-shadow-md mb-8 animate__animated animate__fadeIn animate__delay-1s">
+      Find the best products at the best prices!
+    </p>
+
+    {/* Chat Window with full width and reduced height */}
+    <div className="w-full h-[60vh] flex-grow">
+      <ChatWindow />
+    </div>
+  </div>
+</section>
+
 
       {/* Product Categories Section */}
       <section className="categories-section py-10 bg-slate-800 relative">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6">Shop by Categories</h2>
           
-          {/* Left Button */}
-          <button className="left-btn absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-l-lg z-10 hover:bg-blue-700">
-            &#8592; {/* Left arrow */}
-          </button>
           
-          {/* Right Button */}
-          <button className="right-btn absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded-r-lg z-10 hover:bg-blue-700">
-            &#8594; {/* Right arrow */}
-          </button>
+      
 
           <div className="overflow-x-auto">
             <div className="flex space-x-6 scroll-container">
@@ -105,24 +107,19 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6 text-white">Featured Products</h2>
 
-
           <div className="relative overflow-x-hidden">
-
             <div className="scroll-container flex space-x-6 overflow-x-auto no-scrollbar">
               <ProductList />
             </div>
-
           </div>
             {/* Explore More Button at the End */}
             <div className="text-center mt-10">
-            <button className="bg-yellow-500 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300">
-              Explore More
-            </button>
-          </div>
-
+              <button className="bg-yellow-500 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300">
+                Explore More
+              </button>
+            </div>
         </div>
       </section>
-
 
     </div>
   );

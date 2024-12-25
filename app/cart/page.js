@@ -1,4 +1,6 @@
-// Cart.js
+// app/cart/page.js
+'use client';
+
 import React, { useState } from 'react';
 
 const Cart = () => {

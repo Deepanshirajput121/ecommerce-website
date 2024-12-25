@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Sample product data for kids
-const products = [
+const products = [+
     {
         id: 1,
         name: "Kid's T-Shirt",
