@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; 
 
 // Sample product data for kids
-const products = [+
+const products = [
     {
         id: 1,
         name: "Kid's T-Shirt",
@@ -136,7 +137,6 @@ const products = [+
 ];
 
 
-
 export default function ProductDetails({ params }) {
     const { id } = params; // Get the dynamic id
     const [product, setProduct] = useState(null);
@@ -156,7 +156,7 @@ export default function ProductDetails({ params }) {
     };
 
     if (!product) {
-        return <p>Loading...</p>;
+        return <p>Loading...</p>; // Can be replaced with a placeholder or spinner for UX
     }
 
     return (
@@ -170,27 +170,30 @@ export default function ProductDetails({ params }) {
                 <h1 className="text-4xl font-semibold">{product.name}</h1>
                 <Link href="/kids">
                     <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
-                        Back to kids Collection
+                        Back to Kids Collection
                     </button>
                 </Link>
             </div>
 
             <div className="flex flex-col md:flex-row gap-6">
-                <img
+                {/* Replaced <img> tag with <Image /> component for optimization */}
+                <Image
                     src={product.image}
                     alt={product.name}
                     className="w-full md:w-1/3 h-auto rounded-lg shadow-lg"
+                    width={500}  // Specify width
+                    height={500}  // Specify height
                 />
                 <div className="w-full md:w-2/3">
                     <h2 className="text-6xl font-bold mb-4">Price: {product.price}</h2>
-                    <p className="text-5xl leading-snug mb-8">{product.description}</p>
-                    <ul className="text-5xl leading-snug mb-8 space-y-4">
-                        <li><strong>Material:</strong> {product.material}</li>
-                        <li><strong>Available Sizes:</strong> {product.size}</li>
-                        <li><strong>Care Instructions:</strong> {product.care}</li>
+                    <p className="text-xl leading-snug mb-8">{product.description}</p>
+
+                    <ul className="text-xl leading-snug mb-8 space-y-4">
+                        <li><strong>Stock:</strong> {product.stock} available</li>
                     </ul>
+                    
                     <button
-                        className="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition duration-300 text-5xl"
+                        className="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition duration-300 text-xl"
                         onClick={handleAddToCart}
                     >
                         Add to Cart
