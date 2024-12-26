@@ -2,9 +2,9 @@
 
 import localFont from "next/font/local";
 import './globals.css';
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
-import { CartProvider } from './Components/CartContext';
+import Navbar from '../src/Components/Navbar';
+import Footer from '../src/Components/Footer';
+import { CartProvider } from '../src/Components/CartContext';
 
 // Local fonts ko import karenge
 const geistSans = localFont({

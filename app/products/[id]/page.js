@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useCart } from '../../Components/CartContext';
+import { useCart } from '../../../src/Components/CartContext';
 
 
 // Sample product data for demonstration

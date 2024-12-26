@@ -184,7 +184,7 @@ export default function Men() {
 
         {/* Explore More Button at the End */}
         <div className="text-center mt-10">
-          <Link href="/more-products">
+          <Link href="/men">
             <button className="bg-yellow-500 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300">
               Explore More
             </button>

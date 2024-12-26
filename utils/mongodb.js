@@ -1,12 +1,15 @@
-// utils/mongodb.js
 import { MongoClient } from 'mongodb';
 
-const client = new MongoClient(process.env.MONGODB_URI);
+let cachedClient = null;
 
 export async function connectToDatabase() {
-    if (!client.isConnected()) {
-        await client.connect();
-    }
-    const db = client.db();
-    return db;
+  if (!cachedClient) {
+    const uri = process.env.MONGODB_URI; // Add this in your .env file
+    const client = new MongoClient(uri);
+
+    await client.connect();
+    cachedClient = client.db('myDatabase'); // Replace 'myDatabase' with your DB name
+  }
+
+  return cachedClient;
 }

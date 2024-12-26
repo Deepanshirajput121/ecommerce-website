@@ -1,26 +1,46 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(""); // For displaying errors
     const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('/api/signup', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password }),
-        });
 
-        if (response.ok) {
-            router.push('/'); // Signup ke baad Home page par redirect
-        } else {
-            console.error('Signup failed');
+        // Basic validation
+        if (!username || !email || !password) {
+            setError("All fields are required.");
+            return;
+        }
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters long.");
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
+            });
+
+            if (response.ok) {
+                setError(""); // Clear any existing errors
+                alert("Signup successful!");
+                router.push("/"); // Redirect to homepage
+            } else {
+                const errorData = await response.json();
+                setError(errorData.message || "Signup failed. Please try again.");
+            }
+        } catch (err) {
+            console.error("Error during signup:", err);
+            setError("Something went wrong. Please try again.");
         }
     };
 
@@ -32,6 +52,12 @@ export default function Signup() {
                     <p className="text-gray-500">Sign up for a new account</p>
                 </div>
 
+                {error && (
+                    <div className="mb-4 text-center text-red-500">
+                        <p>{error}</p>
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                     {/* Username Input */}
                     <div className="mb-6">
@@ -41,6 +67,7 @@ export default function Signup() {
                         <input
                             type="text"
                             id="username"
+                            required
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your username"
                             value={username}
@@ -56,6 +83,7 @@ export default function Signup() {
                         <input
                             type="email"
                             id="email"
+                            required
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="you@example.com"
                             value={email}
@@ -71,6 +99,7 @@ export default function Signup() {
                         <input
                             type="password"
                             id="password"
+                            required
                             className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="********"
                             value={password}
@@ -88,7 +117,7 @@ export default function Signup() {
 
                 <div className="mt-8 text-center">
                     <p className="text-sm text-gray-600">
-                        Already have an account?{' '}
+                        Already have an account?{" "}
                         <a href="/login" className="text-blue-500 hover:underline">
                             Login
                         </a>

@@ -1,42 +1,24 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const { productsRoute } = require('./routes');  // Routes import karte hain
+
+dotenv.config();  // Load environment variables
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json()); // To parse incoming JSON data
 
-// MongoDB connection (replace with your MongoDB URI)
-mongoose.connect('mongodb://localhost:27017/productdb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+// Define Routes
+app.use('/api/search', productsRoute);  // Main endpoint '/api/search'
+
+// Basic check
+app.get('/', (req, res) => {
+  res.send('API is running');
 });
 
-// Define the Product Schema
-const productSchema = new mongoose.Schema({
-  name: String,
-  price: String,
-  image: String,
-  link: String
-});
-
-const Product = mongoose.model('Product', productSchema);
-
-// Route to get products based on query
-app.post('/search', async (req, res) => {
-  const { query } = req.body;
-  try {
-    const results = await Product.find({
-      name: { $regex: query, $options: 'i' }
-    });
-    res.json(results);
-  } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-
-// Start the server
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

@@ -134,9 +134,11 @@ export default function Kids() {
           </p>
 
           {/* Explore More Button */}
+          <Link href="#products">
           <button className="mt-6 bg-blue-600 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
             Explore Now
           </button>
+          </Link>
         </div>
       </section>
 
@@ -186,9 +188,11 @@ export default function Kids() {
 
           {/* Explore More Button at the End */}
           <div className="text-center mt-10">
+          <Link href="/kids">
             <button className="bg-yellow-500 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300">
               Explore More
             </button>
+            </Link>
           </div>
         </div>
       </section>

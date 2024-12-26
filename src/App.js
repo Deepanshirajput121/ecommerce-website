@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CartProvider } from '../Components/CartContext';
-import ProductsList from './components/ProductsList';  // Ensure this path is correct
-import ProductDetails from './components/ProductDetails'; // Ensure this path is correct
-import CartPage from './Cart/page'; // Yahan aapka CartPage import ho raha hai
+import ProductsList from '../../app/Components/ProductsList';  // Ensure this path is correct
+import ProductDetails from '../../app/Components/ProductDetails'; // Ensure this path is correct
+import CartPage from '../app/cart/page'; // Yahan aapka CartPage import ho raha hai
 
 function App() {
     return (
