@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; 
 
 export default function Women() {
   const products = [
@@ -126,9 +127,7 @@ export default function Women() {
           <p className="text-4xl font-semibold text-red-600 mt-4 drop-shadow-lg">Get 20% Off on all items!</p>
           <p className="text-xl text-white mt-2 drop-shadow-md">Use code <span className="font-bold text-yellow-500">WOMEN20</span> at checkout.</p>
           <Link href="#products">
-
             <button className="mt-6 bg-blue-600 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">Explore Now</button>
-
           </Link>
         </div>
       </section>
@@ -140,7 +139,13 @@ export default function Women() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
             {products.map((product) => (
               <div key={product.id} className="bg-white p-6 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl">
-                <img src={product.image} alt={product.name} className="w-full h-64 object-cover rounded-t-lg mb-6" />
+                <Image 
+                  src={product.image} 
+                  alt={product.name} 
+                  width={400} // Add the appropriate width
+                  height={400} // Add the appropriate height
+                  className="w-full h-64 object-cover rounded-t-lg mb-6"
+                />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">{product.name}</h3>
                 <p className="text-lg font-bold text-gray-600 mb-4">{product.price}</p>
 
@@ -183,4 +188,4 @@ export default function Women() {
       </section>
     </div>
   );
-}   
+}

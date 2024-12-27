@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Kids() {
   const products = [
@@ -24,7 +25,7 @@ export default function Kids() {
     },
     {
       id: 4,
-      name: "Kid's Jacket",
+      name: "Kid&apos;s Jacket",
       price: "$35",
       image: "https://i.pinimg.com/564x/7d/7c/36/7d7c3687a035223cab730cf3a0d52f52.jpg",
     },
@@ -122,7 +123,7 @@ export default function Kids() {
         }}
       >
         <div className="container mx-auto text-center">
-          <h1 className="text-6xl font-bold mb-6 text-slate-800 drop-shadow-lg">Kids' Collection</h1>
+          <h1 className="text-6xl font-bold mb-6 text-slate-800 drop-shadow-lg">Kid&apos;s Collection</h1>
           <p className="text-2xl text-slate-800 drop-shadow-md">Discover the latest trends for kids!</p>
 
           {/* Discount Section */}
@@ -151,9 +152,12 @@ export default function Kids() {
                 key={product.id}
                 className="bg-white p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105"
               >
-                <img
+                {/* Use Image component here */}
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={300}  // Define width and height for Image component
+                  height={250}
                   className="w-full h-64 object-cover rounded-t-lg mb-4"
                 />
                 <h3 className="text-lg font-semibold mb-2 text-slate-800">{product.name}</h3>

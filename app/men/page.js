@@ -2,6 +2,7 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Men() {
   const products = [
@@ -145,9 +146,11 @@ export default function Men() {
                 key={product.id}
                 className="bg-white p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105"
               >
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={500}   // Specify the width of the image (this can be adjusted based on your design)
+                  height={400}  // Specify the height of the image (this can be adjusted based on your design)
                   className="w-full h-64 object-cover rounded-t-lg mb-4"
                 />
                 <h3 className="text-lg font-semibold mb-2 text-slate-800">{product.name}</h3>

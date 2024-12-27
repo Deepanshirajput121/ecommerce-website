@@ -1,11 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // use 'react-dom/client' for createRoot
 import App from './App';
-import { CartProvider } from '../app/Components/CartContext';
+import { CartProvider } from './Components/CartContext';
 
-ReactDOM.render(
-    <CartProvider>
-        <App />
-    </CartProvider>,
-    document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root')); // createRoot instead of render
+root.render(
+  <CartProvider>
+    <App />
+  </CartProvider>
 );
