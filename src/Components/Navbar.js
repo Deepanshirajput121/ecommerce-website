@@ -78,8 +78,6 @@ export default function Navbar() {
                         <Image src="/images/logo2.png" alt="Logo" width={50} height={50} />
                     </Link>
                     <div className="relative mx-4 flex items-center max-w-xl">
-                       
-                       
 
                         {suggestions.length > 0 && (
                             <div className="absolute top-12 left-0 bg-white shadow-md rounded-lg w-full z-10">
