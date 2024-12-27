@@ -115,27 +115,39 @@ export default function Men() {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section
-        className="hero-section bg-gray-100 py-10 bg-cover bg-center min-h-screen"
-        style={{ backgroundImage: "url('https://tint.creativemarket.com/otxEDfYODJOnVG8Lez6FTRy-8FaKdfwY4EHNpOkEl38/width:1820/height:1214/gravity:ce/rt:fill-down/el:1/preset:cm_watermark_retina/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzM3MC8zNzA4LzM3MDg4NTcvYWZkb2RrdzI4c2g1YjM4bnRsY2djZ3BpY3dqeHJoOWptMHVmd2ticGhzdG1xaHNscWUxZ3RnYWtzaWJmdGNoYy1vLmpwZw?1709508382')" }}
-      >
-        <div className="container mx-auto text-center">
-          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-md">Men&apos;s Collection</h1>
-          <p className="text-2xl text-white drop-shadow-md">Explore our latest &apos;s fashion items!</p>
-          <p className="text-4xl font-semibold text-red-600 mt-4 drop-shadow-lg">
-            Get 20% Off on all Men&apos;s items!
-          </p>
-          <p className="text-xl text-white mt-2 drop-shadow-md">
-            Use code <span className="font-bold text-yellow-500">MEN20</span> at checkout.
-          </p>
-          <Link href="#products">
-            <button className="mt-6 bg-blue-600 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
-              Explore Now
-            </button>
-          </Link>
-        </div>
-      </section>
+{/* Hero Section */}
+<section
+  className="hero-section py-10 sm:py-16 relative bg-black h-[70vh] sm:h-[50vh] min-w-[320px]"
+  style={{
+    backgroundImage:
+      "url('https://tint.creativemarket.com/otxEDfYODJOnVG8Lez6FTRy-8FaKdfwY4EHNpOkEl38/width:1820/height:1214/gravity:ce/rt:fill-down/el:1/preset:cm_watermark_retina/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzM3MC8zNzA4LzM3MDg4NTcvYWZkb2RrdzI4c2g1YjM4bnRsY2djZ3BpY3dqeHJoOWptMHVmd2ticGhzdG1xaHNscWUxZ3RnYWtzaWJmdGNoYy1vLmpwZw?1709508382')",
+  }}
+>
+  <div className="absolute inset-0 w-full h-full bg-black opacity-70"></div> {/* Increased opacity */}
+  <div className="container mx-auto text-center relative z-10 px-4 sm:px-8">
+    <h1 className="text-4xl sm:text-3xl font-bold mb-4 text-white drop-shadow-lg">
+      Men&apos;s Collection
+    </h1>
+    <p className="text-lg sm:text-base text-white drop-shadow-md mb-6">
+      Explore our latest &apos;s fashion items!
+    </p>
+    <p className="text-lg sm:text-base md:text-base font-semibold text-red-600 mt-4 drop-shadow-lg">
+      Get 20% Off on all Men&apos;s items!
+    </p>
+    <p className="text-base sm:text-lg md:text-xl text-white mt-2 drop-shadow-md">
+      Use code <span className="font-bold text-yellow-500">MEN20</span> at checkout.
+    </p>
+    <Link href="#products">
+      <button className="mt-6 bg-blue-600 text-white text-sm sm:text-lg font-semibold py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
+        Explore Now
+      </button>
+    </Link>
+  </div>
+</section>
+
+
+
+
 
       {/* Product Section */}
       <section id="products" className="py-10">
@@ -144,7 +156,7 @@ export default function Men() {
             {products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+                className="bg-slate-950 p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105"
               >
                 <Image
                   src={product.image}
@@ -153,8 +165,8 @@ export default function Men() {
                   height={400}  // Specify the height of the image (this can be adjusted based on your design)
                   className="w-full h-64 object-cover rounded-t-lg mb-4"
                 />
-                <h3 className="text-lg font-semibold mb-2 text-slate-800">{product.name}</h3>
-                <p className="text-gray-600 mb-4">{product.price}</p>
+                <h3 className="text-lg font-semibold mb-2 text-white">{product.name}</h3>
+                <p className="text-white mb-4">{product.price}</p>
 
                 {/* Quantity Selector */}
                 <div className="mb-4">
