@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const categories = [
-  { name: 'Polished Gold Flatware', link: '/categories/mens-clothing', image: '/images/npun.jpg' },
+  { name: 'Gold Flatware', link: '/categories/mens-clothing', image: '/images/npun.jpg' },
   { name: 'Laptop', link: '/categories/womens-clothing', image: '/images/lap.jpg' },
   { name: 'Watch', link: '/categories/electronics', image: '/images/watch.jpg' },
   { name: 'Phone', link: '/categories/accessories', image: '/images/phone.jpg' },
@@ -22,7 +22,7 @@ export default function ShopByCategories() {
                 height={200} // Added height
                 className="mx-auto mb-4 rounded-lg"
               />
-              <h3 className="text-xl font-semibold text-slate-800 hover:text-blue-500">
+              <h3 className="text-xl font-semibold text-white hover:text-blue-500">
                 {category.name}
               </h3>
             </div>
