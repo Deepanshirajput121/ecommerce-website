@@ -1,9 +1,10 @@
 import React from "react";
+import Image from 'next/image';
 
 const ProductCard = ({ product }) => {
     return (
         <div className="border rounded-lg p-4 shadow-md transition duration-200 hover:shadow-lg">
-            <img
+            <Image
                 src={product.image}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-md mb-4"

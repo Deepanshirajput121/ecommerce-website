@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const categories = [
   { name: 'Men\'s Clothing', link: '/categories/mens-clothing', image: '/images/npun.jpg' },
@@ -14,9 +15,11 @@ export default function ShopByCategories() {
         {categories.map((category, index) => (
           <Link key={index} href={category.link}>
             <div className="category-item bg-gray-200 p-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              <img
+              <Image
                 src={category.image}
                 alt={category.name}
+                width={300}  // Added width
+                height={200} // Added height
                 className="mx-auto mb-4 rounded-lg"
               />
               <h3 className="text-xl font-semibold text-slate-800 hover:text-blue-500">
