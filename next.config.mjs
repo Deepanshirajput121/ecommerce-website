@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['your-allowed-domain.com'], // Add domains for external images
-    },
-  };
-  
-  export default nextConfig;
-  
+  images: {
+    domains: ['i.pinimg.com'], // Add the trusted image domain here
+  },
+};
+
+export default nextConfig;

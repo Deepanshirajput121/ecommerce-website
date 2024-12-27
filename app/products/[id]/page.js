@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useCart } from '../../../src/Components/CartContext';
 
 
@@ -216,10 +217,11 @@ export default function ProductDetails({ params }) {
       </div>
 
       <div className="flex flex-col md:flex-row gap-6">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full md:w-1/3 h-auto rounded-lg shadow-lg" // Adjusted width here
+        <Image
+          src="https://i.pinimg.com/564x/b9/f2/7e/b9f27ed3b11c7ef0d765fd9a65c2753a.jpg"
+          alt="Men's Casual T-Shirt"
+          width={500} // Set appropriate width
+          height={500} // Set appropriate height
         />
         <div className="w-full md:w-2/3"> {/* Adjusted width for the text container */}
           <h2 className="text-6xl font-bold mb-4">Price: {product.price}</h2>

@@ -1,7 +1,8 @@
 "use client"; // This directive makes the component a Client Component
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { useParams } from "next/navigation"; 
 import { useCart } from '../../../src/Components/CartContext';
 
 
@@ -170,67 +171,86 @@ const products = [
   },
 ];
 
-export default function ProductDetails({ params }) {
-  const { id } = params; // Get the dynamic id
+export default function ProductDetails() {
+  const { id } = useParams(); // Get the dynamic ID from the URL
   const [product, setProduct] = useState(null);
-  const [notification, setNotification] = useState(false); // State to manage notification visibility
+  const [notification, setNotification] = useState(false);
 
   useEffect(() => {
-    // Simulate fetching the product from an API or data source
-    const fetchedProduct = products.find((product) => product.id === parseInt(id));
-    setProduct(fetchedProduct);
+    if (id) {
+      const fetchedProduct = products.find((product) => product.id === parseInt(id)); 
+      setProduct(fetchedProduct);
+    }
   }, [id]);
 
-  const handleAddToCart = () => {
-    setNotification(true); // Show the notification
-    setTimeout(() => {
-      setNotification(false); // Hide notification after 3 seconds
-    }, 3000);
-  };
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
 
   if (!product) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+        <p className="text-2xl ml-4">Loading Product Details...</p>
+      </div>
+    );
   }
-
 
   return (
     <div className="container mx-auto py-10">
-      {notification && (
-        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded shadow-lg">
-          Added to Cart!
-        </div>
-      )}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-semibold">{product.name}</h1>
-        <Link href="/women">
-          <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
-            Back to Women's Collection
-          </button>
-        </Link>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full md:w-1/3 h-auto rounded-lg shadow-lg"
-        />
-        <div className="w-full md:w-2/3">
-          <h2 className="text-6xl font-bold mb-4">Price: {product.price}</h2>
-          <p className="text-5xl leading-snug mb-8">{product.description}</p>
-          <ul className="text-5xl leading-snug mb-8 space-y-4">
-            <li><strong>Material:</strong> {product.material}</li>
-            <li><strong>Available Sizes:</strong> {product.size}</li>
-            <li><strong>Care Instructions:</strong> {product.care}</li>
-          </ul>
-          <button
-            className="w-full bg-pink-600 text-white py-4 rounded-lg hover:bg-pink-700 transition duration-300 text-5xl"
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </button>
-        </div>
-      </div>
+  {notification && (
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-4 rounded shadow-lg">
+      Added to Cart!
     </div>
+  )}
+  <div className="flex justify-between items-center mb-6">
+    <h1 className="text-4xl font-semibold">{product.name}</h1>
+    <button
+      className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
+      onClick={() => window.history.back()}
+    >
+      Back to Collection
+    </button>
+  </div>
+  <div className="flex flex-col md:flex-row">
+    {/* Image */}
+    <div className="w-full h-[400px] md:w-1/3 md:h-[500px] relative mb-4 md:mb-0">
+      <Image
+        src={product.image}
+        alt={product.name}
+        fill
+        className="object-cover rounded-lg shadow-lg"
+        sizes="(max-width: 768px) 100vw, 33vw"
+      />
+    </div>
+
+    {/* Text Section */}
+    <div className="w-full md:w-2/3 md:ml-6">
+      <h2 className="text-2xl md:text-4xl font-bold mb-4">Price: {product.price}</h2>
+      <p className="text-lg md:text-2xl leading-snug mb-8">{product.description}</p>
+      <ul className="text-lg md:text-xl leading-snug mb-8 space-y-4">
+        <li><strong>Material:</strong> {product.material}</li>
+        <li><strong>Available Sizes:</strong> {product.size}</li>
+        <li><strong>Care Instructions:</strong> {product.care}</li>
+      </ul>
+      <button
+        className="w-full bg-pink-600 text-white py-4 rounded-lg hover:bg-pink-700 transition duration-300 text-2xl md:text-5xl"
+        onClick={() => {
+          addToCart(product);
+          setNotification(true);
+        }}
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+  
   );
 }
