@@ -1,15 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 import { FiMessageSquare } from 'react-icons/fi';
-import Image from 'next/image';
-import ChatWindow from "../src/Components/ChatWindow";
-import ProductList from "../src/Components/ProductList";
-import Categories from "../src/Components/Categories";
+import ChatWindow from '../src/Components/ChatWindow';
+import ProductList from '../src/Components/ProductList';
+import Categories from '../src/Components/Categories';
 
 export default function Home() {
-  const [isChatWindowOpen, setIsChatWindowOpen] = useState(false); // State to control chat window visibility
+  const [isChatWindowOpen, setIsChatWindowOpen] = useState(false);
 
   useEffect(() => {
     const container = document.querySelector('.scroll-container');
@@ -52,68 +51,60 @@ export default function Home() {
   }, []);
 
   const toggleChatWindow = () => {
-    setIsChatWindowOpen(!isChatWindowOpen); // Toggle the chat window state
+    setIsChatWindowOpen(!isChatWindowOpen);
   };
 
   return (
     <div>
       {/* Hero Section */}
       <section
-        className="hero-section bg-black py-10 h-[70vh] relative"
+        className="hero-section py-10 relative bg-black h-[70vh] sm:h-[50vh] min-w-[320px]"
         style={{
           backgroundImage: "url('/images/bgimg.jpg')",
-          backgroundSize: 'cover', // This ensures the background image covers the section.
-          backgroundRepeat: 'no-repeat', // Prevents the background from repeating.
-          backgroundPosition: 'center center' // Centers the image within the section.
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
         }}
       >
-        <div className="absolute inset-0 w-full h-full bg-opacity-40"></div>
-        <div className="relative z-10 container mx-auto text-center flex justify-center items-center w-full h-full flex-col">
-          <h1 className="text-6xl font-bold mb-4 text-white drop-shadow-lg">
+        <div className="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+        <div className="relative z-10 container mx-auto text-center flex flex-col justify-center items-center h-full px-4">
+          <h1 className="text-4xl sm:text-3xl font-bold mb-4 text-white drop-shadow-lg">
             Welcome to Our Online Store
           </h1>
-          <p className="text-2xl text-white drop-shadow-md mb-8">
+          <p className="text-lg sm:text-base text-white drop-shadow-md mb-6">
             Find the best products at the best prices!
           </p>
-          <div className="w-full h-[60vh] flex-grow">
-            {/* Conditionally render ChatWindow only if isChatWindowOpen is true */}
-            {isChatWindowOpen && <ChatWindow />}
-          </div>
+          {isChatWindowOpen && <ChatWindow />}
         </div>
-
-        {/* Floating chat icon on the left side */}
-        <div
-          onClick={toggleChatWindow} // Toggle chat window visibility on icon click
-          className="absolute left-5 bottom-5 p-3 bg-blue-500 text-white rounded-full cursor-pointer shadow-lg hover:bg-blue-600"
-        >
-          <FiMessageSquare size={30} />
-        </div>
+    
       </section>
 
       {/* Product Categories Section */}
-      <section className="featured-products-section py-10 bg-white relative">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-6 text-white">
+      <section className="py-8 bg-slate-900 relative">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-2xl sm:text-xl font-semibold mb-4 text-white">
             Shop by Categories
           </h2>
-          <div className="scroll-container flex space-x-6 overflow-x-auto no-scrollbar">
+          {/* Ensure the scroll is smooth without shrinking */}
+          <div className="scroll-container flex space-x-4 overflow-x-auto no-scrollbar min-w-full">
             <Categories />
           </div>
         </div>
       </section>
 
       {/* Featured Products Section */}
-      <section className="featured-products-section py-10 bg-white relative">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-6 text-white">
+      <section className="py-8 bg-slate-950 relative">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-2xl sm:text-xl font-semibold mb-4 text-white">
             Products
           </h2>
-          <div className="scroll-container flex space-x-6 overflow-x-auto no-scrollbar">
+          {/* Responsive Grid Layout to ensure sections don't shrink on small screens */}
+          <div className="scroll-container flex space-x-4 overflow-x-auto no-scrollbar min-w-full">
             <ProductList />
           </div>
-          <div className="text-center mt-10">
+          <div className="text-center mt-6">
             <Link href="/">
-              <button className="bg-yellow-500 text-white text-lg font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300">
+              <button className="bg-yellow-500 text-white text-lg sm:text-base font-semibold py-2 px-6 sm:py-2 sm:px-4 rounded-lg hover:bg-yellow-600 transition">
                 Explore More
               </button>
             </Link>

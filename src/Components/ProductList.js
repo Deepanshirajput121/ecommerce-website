@@ -10,19 +10,20 @@ const categories = [
 
 export default function ShopByCategories() {
   return (
-    <div className="container mx-auto py-16">
-      <div className="flex space-x-6 overflow-x-auto">
+    <div className="container mx-auto py-10">
+      {/* Responsive Layout */}
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-items-center">
         {categories.map((category, index) => (
           <Link key={index} href={category.link}>
-            <div className="category-item bg-gray-200 p-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <div className="category-item bg-gray-800 p-4 sm:p-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
               <Image
                 src={category.image}
                 alt={category.name}
-                width={300}  // Added width
-                height={200} // Added height
+                width={300}
+                height={400}
                 className="mx-auto mb-4 rounded-lg"
               />
-              <h3 className="text-xl font-semibold text-slate-800 hover:text-blue-500">
+              <h3 className="text-xl font-semibold text-white">
                 {category.name}
               </h3>
             </div>
