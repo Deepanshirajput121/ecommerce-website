@@ -127,7 +127,7 @@ export default function Kids() {
 
           {/* Discount Section */}
           <p className="text-4xl font-semibold text-red-600 mt-4 drop-shadow-lg">
-            Get 20% Off on all Kids' items!
+            Get 20% Off on all Kid&apos;s items!
           </p>
           <p className="text-xl text-slate-800 mt-2 drop-shadow-md">
             Use code <span className="font-bold text-yellow-500">KIDS20</span> at checkout.

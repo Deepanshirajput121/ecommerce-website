@@ -120,10 +120,10 @@ export default function Men() {
         style={{ backgroundImage: "url('https://tint.creativemarket.com/otxEDfYODJOnVG8Lez6FTRy-8FaKdfwY4EHNpOkEl38/width:1820/height:1214/gravity:ce/rt:fill-down/el:1/preset:cm_watermark_retina/czM6Ly9maWxlcy5jcmVhdGl2ZW1hcmtldC5jb20vaW1hZ2VzL3NjcmVlbnNob3RzL3Byb2R1Y3RzLzM3MC8zNzA4LzM3MDg4NTcvYWZkb2RrdzI4c2g1YjM4bnRsY2djZ3BpY3dqeHJoOWptMHVmd2ticGhzdG1xaHNscWUxZ3RnYWtzaWJmdGNoYy1vLmpwZw?1709508382')" }}
       >
         <div className="container mx-auto text-center">
-          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-md">Men's Collection</h1>
-          <p className="text-2xl text-white drop-shadow-md">Explore our latest men's fashion items!</p>
+          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-md">Men&apos;s Collection</h1>
+          <p className="text-2xl text-white drop-shadow-md">Explore our latest &apos;s fashion items!</p>
           <p className="text-4xl font-semibold text-red-600 mt-4 drop-shadow-lg">
-            Get 20% Off on all Men's items!
+            Get 20% Off on all Men&apos;s items!
           </p>
           <p className="text-xl text-white mt-2 drop-shadow-md">
             Use code <span className="font-bold text-yellow-500">MEN20</span> at checkout.

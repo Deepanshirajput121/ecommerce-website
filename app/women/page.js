@@ -121,7 +121,7 @@ export default function Women() {
         }}
       >
         <div className="container mx-auto text-center">
-          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-lg">Women's Collection</h1>
+          <h1 className="text-6xl font-bold mb-6 text-white drop-shadow-lg">Women&apos;s Collection</h1>
           <p className="text-2xl text-white drop-shadow-md">Discover the latest trends for women!</p>
           <p className="text-4xl font-semibold text-red-600 mt-4 drop-shadow-lg">Get 20% Off on all items!</p>
           <p className="text-xl text-white mt-2 drop-shadow-md">Use code <span className="font-bold text-yellow-500">WOMEN20</span> at checkout.</p>
@@ -136,7 +136,7 @@ export default function Women() {
       {/* Product Section */}
       <section className="py-16 bg-gray-950">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Women's Products</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Women&apos;s Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
             {products.map((product) => (
               <div key={product.id} className="bg-white p-6 rounded-lg shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl">

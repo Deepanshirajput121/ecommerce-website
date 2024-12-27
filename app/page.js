@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { FiMessageSquare } from 'react-icons/fi';
-
+import Image from 'next/image';
 import ChatWindow from "../src/Components/ChatWindow";
 import ProductList from "../src/Components/ProductList";
 
@@ -102,10 +102,12 @@ export default function Home() {
             <div className="scroll-container flex space-x-6 overflow-x-auto no-scrollbar">
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
                 <div className="relative overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src="https://i.pinimg.com/564x/19/d5/c0/19d5c05fd416024abc9c586cd60a6a5d.jpg"
                     alt="Men&apos;s Clothing"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
+                    width={300}  // Set a fixed width value
+                    height={300}  // Set a fixed height value
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-800">Men&apos;s Clothing</h3>
@@ -113,10 +115,12 @@ export default function Home() {
 
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
                 <div className="relative overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src="https://i.pinimg.com/564x/f8/99/8a/f8998a79ee1ecd0143c6e2acb6a80b87.jpg"
                     alt="Women&apos;s Clothing"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
+                    width={300}
+                    height={300}
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-800">Women&apos;s Clothing</h3>
@@ -124,21 +128,25 @@ export default function Home() {
 
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
                 <div className="relative overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src="https://i.pinimg.com/564x/e1/22/34/e122343ac7ddb125851689e1fb05cc4a.jpg"
                     alt="Electronics"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
-                  />    
+                    width={300}
+                    height={300}
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-800">Electronics</h3>
               </div>
 
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
                 <div className="relative overflow-hidden rounded-lg">
-                  <img
+                  <Image
                     src="https://i.pinimg.com/564x/fd/27/9c/fd279c1a784fd561c9ff8cdee0b05374.jpg"
                     alt="Accessories"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
+                    width={300}
+                    height={300}
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-slate-800">Accessories</h3>

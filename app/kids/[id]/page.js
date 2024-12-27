@@ -170,7 +170,7 @@ export default function ProductDetails({ params }) {
                 <h1 className="text-4xl font-semibold">{product.name}</h1>
                 <Link href="/kids">
                     <button className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
-                        Back to Kids Collection
+                        Back to Kid&apos;s Collection
                     </button>
                 </Link>
             </div>
