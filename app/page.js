@@ -76,7 +76,13 @@ export default function Home() {
           </p>
           {isChatWindowOpen && <ChatWindow />}
         </div>
-    
+        {/* Floating Chat Icon */}
+        <div
+          onClick={toggleChatWindow}
+          className="absolute left-5 bottom-5 p-3 bg-blue-500 text-white rounded-full cursor-pointer shadow-lg hover:bg-blue-600 transition"
+        >
+          <FiMessageSquare size={30} />
+        </div>
       </section>
 
       {/* Product Categories Section */}
@@ -113,4 +119,5 @@ export default function Home() {
       </section>
     </div>
   );
-}
+}  
+
