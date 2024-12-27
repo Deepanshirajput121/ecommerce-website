@@ -104,22 +104,22 @@ export default function Home() {
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     src="https://i.pinimg.com/564x/19/d5/c0/19d5c05fd416024abc9c586cd60a6a5d.jpg"
-                    alt="Men's Clothing"
+                    alt="Men&apos;s Clothing"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800">Men's Clothing</h3>
+                <h3 className="text-xl font-semibold text-slate-800">Men&apos;s Clothing</h3>
               </div>
 
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     src="https://i.pinimg.com/564x/f8/99/8a/f8998a79ee1ecd0143c6e2acb6a80b87.jpg"
-                    alt="Women's Clothing"
+                    alt="Women&apos;s Clothing"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-800">Women's Clothing</h3>
+                <h3 className="text-xl font-semibold text-slate-800">Women&apos;s Clothing</h3>
               </div>
 
               <div className="category-item bg-gray-200 p-6 rounded-lg text-center overflow-hidden group">
@@ -128,7 +128,7 @@ export default function Home() {
                     src="https://i.pinimg.com/564x/e1/22/34/e122343ac7ddb125851689e1fb05cc4a.jpg"
                     alt="Electronics"
                     className="mx-auto mb-4 transition-transform duration-300 transform group-hover:scale-110"
-                  />
+                  />    
                 </div>
                 <h3 className="text-xl font-semibold text-slate-800">Electronics</h3>
               </div>

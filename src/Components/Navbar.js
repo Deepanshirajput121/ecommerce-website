@@ -15,15 +15,15 @@ export default function Navbar() {
     const [searchResults, setSearchResults] = useState([]);
 
     const suggestionData = [
-        "Women's Dress", "Women's Handbag", "Women's Heels", "Women's Sunglasses",
-        "Men's Casual T-Shirt", "Men's Slim Fit Jeans", "Men's Leather Jacket", "Men's Casual Sneakers",
-        "Kid's T-Shirt", "Kid's Jeans", "Kid's Shoes", "Kid's Jacket",
+        "Women&apos;s Dress", "Women&apos;s Handbag", "Women&apos;s Heels", "Women&apos;s Sunglasses",
+        "Men&apos;s Casual T-Shirt", "Men&apos;s Slim Fit Jeans", "Men&apos;s Leather Jacket", "Men&apos;s Casual Sneakers",
+        "Kid&apos;s T-Shirt", "Kid&apos;s Jeans", "Kid&apos;s Shoes", "Kid&apos;s Jacket",
     ];
 
     const products = [
-        { name: "Women's Dress", category: "Women's", url: "/women/dresses" },
-        { name: "Men's Casual T-Shirt", category: "Men's", url: "/men/casual-t-shirts" },
-        { name: "Kid's Shoes", category: "Kid's", url: "/kids/shoes" },
+        { name: "Women&apos;s Dress", category: "Women&apos;s", url: "/women/dresses" },
+        { name: "Men&apos;s Casual T-Shirt", category: "Men&apos;s", url: "/men/casual-t-shirts" },
+        { name: "Kid&apos;s Shoes", category: "Kid&apos;s", url: "/kids/shoes" },
     ];
 
     const handleInputChange = (e) => {
@@ -78,20 +78,8 @@ export default function Navbar() {
                         <Image src="/images/logo2.png" alt="Logo" width={50} height={50} />
                     </Link>
                     <div className="relative mx-4 flex items-center max-w-xl">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            value={searchQuery}
-                            onChange={handleInputChange}
-                            onKeyDown={handleKeyPress}
-                            className="px-4 py-2 flex-grow rounded-lg focus:outline-none border border-gray-300 text-base bg-white w-[800px] shadow-md hover:border-blue-400 transition-all duration-300 focus:bg-black focus:text-white focus:border-gray-500"
-                        />
-                        <button
-                            onClick={handleSearch}
-                            className="absolute right-2 top-0 h-full bg-blue-500 px-4 py-4 text-white rounded-lg hover:bg-blue-600 focus:outline-none text-base transition-all flex justify-center items-center"
-                        >
-                            <i className="fas fa-search text-xl"></i> {/* Font Awesome search icon */}
-                        </button>
+                       
+                       
 
                         {suggestions.length > 0 && (
                             <div className="absolute top-12 left-0 bg-white shadow-md rounded-lg w-full z-10">
@@ -108,12 +96,11 @@ export default function Navbar() {
                         )}
                     </div>
 
-
                     <div className="space-x-6 flex items-center">
                         <Link href="/" className="text-white">Home</Link>
-                        <Link href="/men" className="text-gray-400 hover:text-white">Men's</Link>
-                        <Link href="/women" className="text-gray-400 hover:text-white">Women's</Link>
-                        <Link href="/kids" className="text-gray-400 hover:text-white">Kids</Link>
+                        <Link href="/men" className="text-gray-400 hover:text-white">Men&apos;s</Link>
+                        <Link href="/women" className="text-gray-400 hover:text-white">Women&apos;s</Link>
+                        <Link href="/kids" className="text-gray-400 hover:text-white">Kid&apos;s</Link>
                         <Link
                             href="/login"
                             className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600"

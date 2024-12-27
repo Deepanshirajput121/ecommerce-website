@@ -1,36 +1,46 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 // Mock Inventory Database
 const mockInventory = [
-    { name: "Laptop", price: "$1200", link: "/images/lap.jpg" },
-    { name: "Smartphone", price: "$800", link: "#smartphone" },
-    { name: "Headphones", price: "$150", link: "#headphones" },
-    { name: "Keyboard", price: "$100", link: "#keyboard" },
-    { name: "Monitor", price: "$300", link: "#monitor" },
-    { name: "Women's Handbag", price: "$2000", link: "#monitor" },
-    { name: "Sunglasses", price: "$100", link: "#monitor" },
-    { name: "Jeans", price: "$3000", link: "#monitor" },
+    { name: "Laptop", price: "$1200", link: "/images/laptop.jpg" },
+    { name: "Smartphone", price: "$800", link: "/images/smartphone.jpg" },
+    { name: "Headphones", price: "$150", link: "/images/headphones.jpg" },
+    { name: "Keyboard", price: "$100", link: "/images/keyboard.jpg" },
+    { name: "Monitor", price: "$300", link: "/images/monitor.jpg" },
+    { name: "Handbag", price: "$2000", link: "/images/handbag.jpg" },
+    { name: "Sunglasses", price: "$100", link: "/images/sunglasses.jpg" },
+    { name: "Jeans", price: "$3000", link: "/images/jeans.jpg" },
 ];
 
 // Middleware setup
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // API for searching products
 app.post('/search', (req, res) => {
     const { query } = req.body;
-    const queryLowercase = query.toLowerCase();
+
+    if (!query) {
+        console.log("Search request without query received.");
+        return res.status(400).json({ message: "Query is required" });
+    }
+
+    const queryLowercase = query.trim().toLowerCase();
+    console.log("Search query:", queryLowercase);
+
     const matchingProducts = mockInventory.filter(product =>
         product.name.toLowerCase().includes(queryLowercase)
     );
-    
+
     if (matchingProducts.length > 0) {
-        res.json(matchingProducts);
+        console.log(`Found ${matchingProducts.length} matching products.`);
+        res.status(200).json(matchingProducts);
     } else {
-        res.json({ message: "No products found." });
+        console.log("No matching products found.");
+        res.status(404).json({ message: "No products found." });
     }
 });
 
