@@ -86,7 +86,7 @@ export default function Home() {
       </section>
 
       {/* Product Categories Section */}
-      <section className="py-8 bg-slate-900 relative">
+      <section className="py-8 bg-slate-950 relative">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-2xl sm:text-xl font-semibold mb-4 text-white">
             Shop by Categories

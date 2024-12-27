@@ -14,7 +14,7 @@ export default function ShopByCategories() {
             <div className="flex space-x-6 overflow-x-auto">
                 {categories.map((category, index) => (
                     <Link key={index} href={category.link}>
-                        <div className="category-item bg-gray-800 p-4 sm:p-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        <div className="category-item bg-gray-900 p-4 sm:p-6 rounded-lg text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                             <Image
                                 src={category.image}
                                 alt={category.name}
