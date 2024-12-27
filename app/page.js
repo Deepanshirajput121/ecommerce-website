@@ -91,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* Product Categories Section */}
-      <section className="featured-products-section py-10 bg-slate-950 relative">
+      <section className="featured-products-section py-10 bg-white relative">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6 text-white">
             Shop by Categories
@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="featured-products-section py-10 bg-slate-950 relative">
+      <section className="featured-products-section py-10 bg-white relative">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6 text-white">
             Products
