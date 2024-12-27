@@ -123,50 +123,7 @@ export default function Navbar() {
                 </div>
             )}
 
-            <div
-                className={`fixed top-0 right-0 h-full bg-slate-900 text-white transform transition-transform duration-300 ${isDrawerOpen ? 'translate-x-0' : 'translate-x-full'}`}
-                style={{ width: '25%' }}
-            >
-                <div className="p-5">
-                    <h2 className="text-2xl font-bold mb-4">Your Cart Items</h2>
-                    {cart.length > 0 ? (
-                        <>
-                            <ul className="space-y-2">
-                                {cart.map((item, index) => (
-                                    <li key={index} className="flex justify-between items-center">
-                                        <div>
-                                            <p>{item.name}</p>
-                                            <p className="text-sm text-gray-400">Qty: {item.quantity || 1}</p>
-                                        </div>
-                                        <div className="flex items-center">
-                                            <button
-                                                onClick={() => removeFromCart(item)}
-                                                className="bg-red-500 px-2 py-1 text-white rounded-md"
-                                            >
-                                                -
-                                            </button>
-                                            <span className="ml-2">
-                                                ${(item.price || 0).toFixed(2)}
-                                            </span>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="mt-4">
-                                <p>Total: ${getTotalPrice()}</p>
-                            </div>
-                        </>
-                    ) : (
-                        <p className="text-gray-400">Your cart is empty.</p>
-                    )}
-                </div>
-                <button
-                    onClick={toggleDrawer}
-                    className="absolute top-4 right-4 text-xl text-gray-300 hover:text-white"
-                >
-                    &times;
-                </button>
-            </div>
+           
         </>
     );
 }
