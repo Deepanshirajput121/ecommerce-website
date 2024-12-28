@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+
 export default function Men() {
   const products = [
     {
@@ -134,6 +135,7 @@ export default function Men() {
     <p className="text-lg sm:text-base md:text-base font-semibold text-red-600 mt-4 drop-shadow-lg">
       Get 20% Off on all Men&apos;s items!
     </p>
+
     <p className="text-base sm:text-lg md:text-xl text-white mt-2 drop-shadow-md">
       Use code <span className="font-bold text-yellow-500">MEN20</span> at checkout.
     </p>
