@@ -116,32 +116,32 @@ export default function Kids() {
     <div>
 {/* Hero Section */}
 <section
-  className="hero-section bg-gray-100 py-16 bg-cover bg-center h-[80vh] relative"
+  className="hero-section py-10 sm:py-16 relative bg-black h-[70vh] sm:h-[50vh] min-w-[320px]"
   style={{
     backgroundImage:
       "url('https://img.freepik.com/foto-gratis/ropa-tendedero_23-2147790636.jpg?t=st=1728669874~exp=1728673474~hmac=28da64899ca1c2fde30d5c3a0bca24ae4dd93e7d30b1943503bc7ba3d976c8fc&w=996')",
   }}
 >
-  <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay for text visibility */}
+<div className="absolute inset-0 w-full h-full bg-black opacity-70"></div> {/* Increased opacity */}
   <div className="container mx-auto text-center relative z-10 px-4 md:px-8">
     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white drop-shadow-lg">
       Kid&apos;s Collection
     </h1>
-    <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md">
+    <p className="text-lg sm:text-base text-white drop-shadow-md mb-6">
       Discover the latest trends for kids!
     </p>
 
     {/* Discount Section */}
-    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-red-600 mt-4 drop-shadow-lg">
+    <p className="text-lg sm:text-base md:text-base font-semibold text-red-600 mt-4 drop-shadow-lg">
       Get 20% Off on all Kid&apos;s items!
     </p>
-    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-800 mt-2 drop-shadow-md">
+    <p className="text-base sm:text-lg md:text-xl text-white mt-2 drop-shadow-md">
       Use code <span className="font-bold text-yellow-500">KIDS20</span> at checkout.
     </p>
 
     {/* Explore More Button */}
     <Link href="#products">
-      <button className="mt-6 bg-blue-600 text-sm sm:text-lg font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+    <button className="mt-6 bg-blue-600 text-white text-sm sm:text-lg font-semibold py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
         Explore Now
       </button>
     </Link>
@@ -152,6 +152,7 @@ export default function Kids() {
       {/* Products Section */}
       <section className="py-10">
         <div className="container mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Kid&apos;s Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
             {products.map((product) => (
               <div

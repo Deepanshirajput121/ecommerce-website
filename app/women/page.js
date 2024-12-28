@@ -116,7 +116,7 @@ export default function Women() {
     <div>
 {/* Hero Section */}
 <section
-  className="hero-section bg-pink-100 py-16 bg-cover bg-center h-[90vh] relative"
+  className="hero-section py-10 sm:py-16 relative bg-black h-[70vh] sm:h-[50vh] min-w-[320px]"
   style={{
     backgroundImage: "url('https://images.squarespace-cdn.com/content/v1/5d113b099ae33400012a290d/1578454979317-Y4Q92TG96PFZJNO084G0/Moushumi+Khara+-+The+Lifestyle+Editor?format=1500w')",
   }}
@@ -129,14 +129,14 @@ export default function Women() {
     <p className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md">
       Discover the latest trends for women!
     </p>
-    <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-red-600 mt-4 drop-shadow-lg">
+    <p className="text-lg sm:text-base md:text-base font-semibold text-red-600 mt-4 drop-shadow-lg">
       Get 20% Off on all items!
     </p>
-    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-2 drop-shadow-md">
+    <p className="text-base sm:text-lg md:text-xl text-white mt-2 drop-shadow-md">
       Use code <span className="font-bold text-yellow-500">WOMEN20</span> at checkout.
     </p>
     <Link href="#products">
-      <button className="mt-6 bg-blue-600 text-sm sm:text-lg font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+    <button className="mt-6 bg-blue-600 text-white text-sm sm:text-lg font-semibold py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
         Explore Now
       </button>
     </Link>

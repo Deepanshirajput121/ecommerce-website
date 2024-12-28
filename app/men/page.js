@@ -125,8 +125,8 @@ export default function Men() {
   }}
 >
   <div className="absolute inset-0 w-full h-full bg-black opacity-70"></div> {/* Increased opacity */}
-  <div className="container mx-auto text-center relative z-10 px-4 sm:px-8">
-    <h1 className="text-4xl sm:text-3xl font-bold mb-4 text-white drop-shadow-lg">
+  <div className="container mx-auto text-center relative z-10 px-4 md:px-8">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white drop-shadow-lg">
       Men&apos;s Collection
     </h1>
     <p className="text-lg sm:text-base text-white drop-shadow-md mb-6">
@@ -154,6 +154,7 @@ export default function Men() {
       {/* Product Section */}
       <section id="products" className="py-10">
         <div className="container mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center text-white">Featured Men&apos;s Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
             {products.map((product) => (
               <div
