@@ -96,9 +96,9 @@ export default function Navbar() {
 
                     <div className="space-x-4 flex items-center"> {/* Changed space-x-6 to space-x-4 for a smaller gap */}
                         <Link href="/" className="text-white">Home</Link>
-                        <Link href="/men" className="text-gray-400 hover:text-white">Men&apos;s</Link>
-                        <Link href="/women" className="text-gray-400 hover:text-white">Women&apos;s</Link>
-                        <Link href="/kids" className="text-gray-400 hover:text-white">Kid&apos;s</Link>
+                        <Link href="/men" className=" text-white">Men&apos;s</Link>
+                        <Link href="/women" className="text-white">Women&apos;s</Link>
+                        <Link href="/kids" className="text-white">Kid&apos;s</Link>
                         <Link
                             href="/login"
                             className="text-white bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600"
