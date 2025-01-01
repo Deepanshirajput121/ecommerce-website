@@ -7,13 +7,13 @@ export default function Signup() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(""); // For displaying errors
+    const [showPassword, setShowPassword] = useState(false); // For toggling password visibility
+    const [error, setError] = useState("");
     const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Basic validation
         if (!username || !email || !password) {
             setError("All fields are required.");
             return;
@@ -31,9 +31,9 @@ export default function Signup() {
             });
 
             if (response.ok) {
-                setError(""); // Clear any existing errors
+                setError("");
                 alert("Signup successful!");
-                router.push("/"); // Redirect to homepage
+                router.push("/");
             } else {
                 const errorData = await response.json();
                 setError(errorData.message || "Signup failed. Please try again.");
@@ -59,7 +59,6 @@ export default function Signup() {
                 )}
 
                 <form onSubmit={handleSubmit}>
-                    {/* Username Input */}
                     <div className="mb-6">
                         <label htmlFor="username" className="block text-sm font-medium text-gray-500">
                             Username
@@ -68,14 +67,13 @@ export default function Signup() {
                             type="text"
                             id="username"
                             required
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
 
-                    {/* Email Input */}
                     <div className="mb-6">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-500">
                             Email Address
@@ -84,27 +82,32 @@ export default function Signup() {
                             type="email"
                             id="email"
                             required
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="you@example.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
 
-                    {/* Password Input */}
-                    <div className="mb-9">
+                    <div className="mb-9 relative">
                         <label htmlFor="password" className="block text-sm font-medium text-gray-500">
                             Password
                         </label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="password"
                             required
-                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="mt-1 w-full p-3 border border-gray-300 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="********"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        <span
+                            className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-500 hover:text-blue-500"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? "🙈" : "👁️"}
+                        </span>
                     </div>
 
                     <button
