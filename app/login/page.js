@@ -4,10 +4,15 @@ import React, { useState } from "react";
 
 export default function Login() {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false); // State to handle password visibility
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -50,26 +55,33 @@ export default function Login() {
               name="username"
               value={formData.username}
               onChange={handleInputChange}
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="Enter your username"
               required
             />
           </div>
 
-          <div className="mb-9">
+          <div className="mb-9 relative">
             <label htmlFor="password" className="block text-sm font-medium text-gray-500">
               Password
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="********"
               required
             />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </button>
           </div>
 
           <button
@@ -82,7 +94,7 @@ export default function Login() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
-          Don&apos;t have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a href="/signup" className="text-blue-500 hover:underline">
               Sign up
             </a>
